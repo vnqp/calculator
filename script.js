@@ -162,7 +162,7 @@ function equalSign(number1, number2) {
         return displayResult;
 
     } 
-    else if (operator == '*') {
+    else if (operator == 'x') {
         let displayResult = multiply(number1, number2)
         return displayResult;
     }
