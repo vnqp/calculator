@@ -38,6 +38,7 @@ function divide(number1, number2) {
 
 function populateDisplay(operator) {
     const displayH1 = document.getElementById('displayH1')
+    const displayN = document.getElementById('firstN')
     if (operator == "EQUAL") {
         function second() {
             n2 = displayH1.innerHTML
@@ -47,6 +48,7 @@ function populateDisplay(operator) {
     }
     if (operator == true) {
         function saveNumber() {
+            displayN.innerHTML = `${displayH1.innerHTML}${operatorBtn}`
             n1 = displayH1.innerHTML
             clear()
         }
@@ -63,8 +65,13 @@ function populateDisplay(operator) {
         console.log(displayH1.innerHTML)
     }
 
+    function clearAll() {
+        displayH1.innerHTML = ''
+        displayN.innerHTML = ''
+    }
+
     if (operator == "clear") {
-        clear()
+        clearAll()
     }
 }
 
@@ -91,6 +98,7 @@ buttons.forEach((button) => {
             let number1 = parseInt(n1)
             let number2 = parseInt(n2)
             let equal = equalSign(number1, number2)
+            populateDisplay('clear')
             const displayH1 = document.getElementById('displayH1')
             displayH1.innerHTML = equal
         }
