@@ -1,5 +1,5 @@
-let n1
-let n2 
+let n1 = 0
+let n2 = 0
 let currentButton = ''
 const functions = {
     add: add(),
@@ -9,25 +9,28 @@ const functions = {
 }
 
 // functions
-function add(n1, n2) {
-    calc = n1 + n2
+function add(number1, number2) {
+    let calc = number1 + number2
     return calc;
 }
 
-function subtract(n1, n2) {
-    if (n1 > n2) {
-        calc = n1 - n2
+function subtract(number1, number2) {
+    if (number1 > number2) {
+        let calc = number1 - number2
+        return calc;
     } else {
-        calc = n2 - n1
+        calc = number2 - number1
+        return calc;
     }
 }
-
-function multiply(n1, n2) {
-    calc = n1 * n2
+function multiply(number1, number2) {
+    let calc = number1 * number2
+    return calc;
 }
 
-function divide(n1, n2) {
-    calc = n1 / n2
+function divide(number1, number2) {
+    let calc = number1 / number2
+    return calc;
 }
 
 
@@ -35,13 +38,33 @@ function divide(n1, n2) {
 
 function populateDisplay(operator) {
     const displayH1 = document.getElementById('displayH1')
-    displayH1.innerHTML += `${currentButtonContent}`
+    if (operator == "EQUAL") {
+        function second() {
+            n2 = displayH1.innerHTML
+            console.log(n2)
+        }
+        second()
+    }
     if (operator == true) {
         function saveNumber() {
             n1 = displayH1.innerHTML
-            displayH1.innerHTML = ''
+            clear()
         }
         saveNumber()
+    }
+
+    if (displayH1.innerHTML == "0") {
+        displayH1.innerHTML = `${currentButtonContent}`
+    } else {
+        displayH1.innerHTML += `${currentButtonContent}`
+    }
+    function clear() {
+        displayH1.innerHTML = '0'
+        console.log(displayH1.innerHTML)
+    }
+
+    if (operator == "clear") {
+        clear()
     }
 }
 
@@ -64,25 +87,31 @@ buttons.forEach((button) => {
         }
 
         if (currentButton == "btnEqual") {
-            number1 = parseInt(n1)
-            number2 = parseInt(currentButtonContent)
-            equalSign(number1, number2)
-            
+            populateDisplay("EQUAL")
+            let number1 = parseInt(n1)
+            let number2 = parseInt(n2)
+            let equal = equalSign(number1, number2)
+            const displayH1 = document.getElementById('displayH1')
+            displayH1.innerHTML = equal
+        }
+
+        if (currentButton == 'btnClear') {
+            populateDisplay('clear')
         }
     })
 }) 
 
 const numberButtonList = {
-    btnOne: 1,
-    btnTwo: 2,
-    btnThree: 3,
-    btnFour: 4,
-    btnFive: 5,
-    btnSix: 6,
-    btnSeven: 7,
-    btnEight: 8,
-    btnNine: 9,
-    btnZero: 0,
+    btnOne: '1',
+    btnTwo: '2',
+    btnThree: '3',
+    btnFour: '4',
+    btnFive: '5',
+    btnSix: '6',
+    btnSeven: '7',
+    btnEight: '8',
+    btnNine: '9',
+    btnZero: '0',
 
 }
 
@@ -94,22 +123,23 @@ const operatorButtonList = {
 }
 
 function equalSign(number1, number2) {
-    let operator = checkOperator()
-    calc = functions[operator](number1, number2)
-}
+    let operator = operatorBtn
+    if (operator == '+') {
+        let displayResult = add(number1, number2)
+        return displayResult;
+    } 
+    else if (operator == '-') {
+        let displayResult = subtract(number1, number2)
+        return displayResult;
 
-function checkOperator(currentOperator) {
-    if (currentOperator == btnPlus) {
-        return 'add';
+    } 
+    else if (operator == '*') {
+        let displayResult = multiply(number1, number2)
+        return displayResult;
     }
-    else if (currentOperator == btnSubtract) {
-        return 'subtract';
+    else if (operator == '/') {
+        let displayResult = divide(number1, number2)
+        return displayResult;
     }
-    else if (currentOperator == btnMultiply) {
-        return 'multiply';
-    }
-    else if (currentOperator == btnDivide) {
-        return 'divide';
-    }
-}
 
+}
