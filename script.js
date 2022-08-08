@@ -31,6 +31,9 @@ function multiply(number1, number2) {
 }
 
 function divide(number1, number2) {
+    if (number2 == 0) {
+        return 'OOPS!';
+    }
     let calc = number1 / number2
     return calc;
 }
