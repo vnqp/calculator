@@ -1,6 +1,7 @@
 let n1 = 0
 let n2 = 0
 let currentButton = ''
+let operatorChecker = false
 const functions = {
     add: add(),
     subtract: subtract(),
@@ -108,18 +109,20 @@ buttons.forEach((button) => {
         if (currentButton in operatorButtonList) {
             currentButtonContent = ''
             let operator = true
+            if (operatorChecker == true) {
+                equal()
+                operatorBtn = operatorButtonList[currentButton]
+                populateDisplay(operator) 
+            }
+            else {
             operatorBtn = operatorButtonList[currentButton]
             populateDisplay(operator) 
+            operatorChecker = true
+            }
         }
 
         if (currentButton == "btnEqual") {
-            populateDisplay("EQUAL")
-            let number1 = parseInt(n1)
-            let number2 = parseInt(n2)
-            let equal = equalSign(number1, number2)
-            populateDisplay('clear')
-            const displayH1 = document.getElementById('displayH1')
-            displayH1.innerHTML = equal
+           equal()
         }
 
         if (currentButton == 'btnClear') {
@@ -128,6 +131,16 @@ buttons.forEach((button) => {
     })
 }) 
 
+function equal() {
+    populateDisplay("EQUAL")
+    let number1 = parseInt(n1)
+    let number2 = parseInt(n2)
+    let equal = equalSign(number1, number2)
+    populateDisplay('clear')
+    const displayH1 = document.getElementById('displayH1')
+    displayH1.innerHTML = equal
+    operatorChecker = false
+}
 const numberButtonList = {
     btnOne: '1',
     btnTwo: '2',
