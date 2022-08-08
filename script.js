@@ -6,6 +6,8 @@ const functions = {
     subtract: subtract(),
     multiply: multiply(),
     divide: divide(),
+    rest: rest(),
+    power: power()
 }
 
 // functions
@@ -33,6 +35,20 @@ function divide(number1, number2) {
     return calc;
 }
 
+function rest(number1, number2) {   
+    let calc = number1 % number2
+    return calc;
+}
+
+function power(number1, number2) {
+    let calc = number1
+    for (let i = 1; i < number2; i++) {
+        calc = number1 * calc
+    }  
+    return calc;
+}
+ 
+ 
 
 // operator
 
@@ -126,8 +142,10 @@ const numberButtonList = {
 const operatorButtonList = {
     btnPlus: '+',
     btnSubtract: '-',
-    btnMultiply: '*',
+    btnMultiply: 'x',
     btnDivide: '/',
+    btnPercent: '%',
+    btnX: '^',
 }
 
 function equalSign(number1, number2) {
@@ -147,6 +165,14 @@ function equalSign(number1, number2) {
     }
     else if (operator == '/') {
         let displayResult = divide(number1, number2)
+        return displayResult;
+    }
+    else if (operator == '%') {
+        let displayResult = rest(number1, number2)
+        return displayResult;
+    }
+    else if (operator == '^') {
+        let displayResult = power(number1, number2)
         return displayResult;
     }
 

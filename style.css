@@ -68,3 +68,7 @@ body {
 .dot-btn {
     background-color: rgb(95, 95, 95);
 }
+
+#btnZero {
+    flex-grow: 3.35;
+}
