@@ -2,6 +2,9 @@ let n1 = 0
 let n2 = 0
 let currentButton = ''
 let operatorChecker = 0
+
+
+// functions list
 const functions = {
     add: add(),
     subtract: subtract(),
@@ -11,12 +14,12 @@ const functions = {
     power: power()
 }
 
+
 // functions
 function add(number1, number2) {
     let calc = number1 + number2
     return calc;
 }
-
 function subtract(number1, number2) {
     if (number1 > number2) {
         let calc = number1 - number2
@@ -30,7 +33,6 @@ function multiply(number1, number2) {
     let calc = number1 * number2
     return calc;
 }
-
 function divide(number1, number2) {
     if (number2 == 0) {
         return 'OOPS!';
@@ -38,12 +40,10 @@ function divide(number1, number2) {
     let calc = number1 / number2
     return calc;
 }
-
 function rest(number1, number2) {   
     let calc = number1 % number2
     return calc;
 }
-
 function power(number1, number2) {
     let calc = number1
     for (let i = 1; i < number2; i++) {
@@ -52,10 +52,8 @@ function power(number1, number2) {
     return calc;
 }
  
- 
 
-// operator
-
+// modify display
 function populateDisplay(operator) {
     const displayH1 = document.getElementById('displayH1')
     const displayN = document.getElementById('firstN')
@@ -96,6 +94,8 @@ function populateDisplay(operator) {
     }
 }
 
+
+// buttons selectors
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -129,7 +129,6 @@ buttons.forEach((button) => {
             }
         }
 
-
         if (currentButton == "btnEqual") {
            equal()
         }
@@ -139,6 +138,8 @@ buttons.forEach((button) => {
     })
 }) 
 
+
+// create equal() function
 function equal() {
     populateDisplay("EQUAL")
     let number1 = parseInt(n1)
@@ -149,6 +150,9 @@ function equal() {
     displayH1.innerHTML = equal
     operatorChecker = false
 }
+
+
+// buttons database (for checkers/analysers)
 const numberButtonList = {
     btnOne: '1',
     btnTwo: '2',
@@ -162,7 +166,6 @@ const numberButtonList = {
     btnZero: '0',
 
 }
-
 const operatorButtonList = {
     btnPlus: '+',
     btnSubtract: '-',
@@ -172,6 +175,8 @@ const operatorButtonList = {
     btnX: '^',
 }
 
+
+// checker
 function equalSign(number1, number2) {
     if (!(number1)) {
         number1 = 0
