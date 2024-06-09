@@ -1,4 +1,4 @@
-Live on: https://viniqp.github.io/calculator/
+Live on: https://vnqp.github.io/calculator/
 
 SCREENSHOT
 
